@@ -6,12 +6,11 @@ from keras.models import Sequential, model_from_yaml, load_model
 from keras.layers import Dense, Conv2D, Flatten, Dropout, MaxPool2D
 from keras.optimizers import Adam, SGD
 from keras.utils import np_utils, plot_model
-from sklearn.model_selection import train_test_split
 from keras.applications.resnet50 import preprocess_input, decode_predictions
 import cv2
 
 
-np.random.seed(7)
+np.random.seed(44) #MALATYA<3 
 img_h, img_w = 128, 128
 image_size = (128, 128)
 nbatch_size = 2
@@ -73,20 +72,15 @@ model.compile(loss='binary_crossentropy',optimizer=sgd, metrics=['accuracy'])
 
 # Loading the dataset
 print("load_data......")
-images, lables = load_data()
-images = images/255
-x_train, x_test, y_train, y_test = train_test_split(images, lables, test_size=0.1)
+x_train, y_train = load_data()
+x_train = x_train/255
 print(x_train.shape,y_train.shape)
 
-# Viewing training on TensorBoard
-# print("train.......")
-# tbCallbacks = callbacks.TensorBoard(log_dir='./logs', histogram_freq=1, write_graph=True, write_images=True)
-
-model.fit(x_train, y_train, batch_size=nbatch_size, epochs=nepochs, verbose=1, validation_data=(x_test, y_test))
+model.fit(x_train, y_train, batch_size=nbatch_size, epochs=nepochs, verbose=1, validation_split=0.1)
 
 # Evaluating the model
 print("evaluate......")
-score, accuracy = model.evaluate(x_test, y_test, batch_size=nbatch_size)
+score, accuracy = model.evaluate(x_train[:3], y_train[:3], batch_size=nbatch_size)
 print('score:', score, 'accuracy:', accuracy)
 
 # Saving the mofel and making the reaining process much easier and mre practial. Saving the weights separately： from
