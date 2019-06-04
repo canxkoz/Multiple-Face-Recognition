@@ -2,13 +2,13 @@
 
 Multipe Face Recognition program that uses Keras and OpenCV. I built this as a part of DVCHacks.
 
-![Testing Image](Test.jpg)
+![Testing Image](pictures_for_readme/Test.jpg)
 
 ## build_dataset.py
 
 Taking pictures of the user by using OpenCV. Saving those pictures in a folder named "dataset". By the use of haarcascade features the pictures only include human faces.
 
-![Creating a Dataset](Build_Dataset.JPG)
+![Creating a Dataset](pictures_for_readme/Build_Dataset.JPG)
 
 ## train_data.py
 
@@ -23,13 +23,13 @@ I created a convolutional feature extractor network with multiple layers. I did 
 - Validation accuracy, validation loss of the model is printed at the end of the training process. 
 - At last weights are saved as a ".h5" file and model structure is saved as a ".yaml" file and both of them are kept in "keras_model" folder.  
 
-![Training the Model](Train_Data.JPG)
+![Training the Model](pictures_for_readme/Train_Data.JPG)
 
 ## check_result.py
 
 The test accuracy can be seen from the results of this file. In this file, I crate labels for the test set.
 
-![Creating a Dataset](Check_Result.JPG)
+![Creating a Dataset](pictures_for_readme/Check_Result.JPG)
 
 ## real_time_re.py
 
